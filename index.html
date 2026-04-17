@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             min-height: 100vh;
             display: flex;
@@ -20,25 +21,37 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             font-family: 'Arial', sans-serif;
             overflow: hidden;
-            padding: 20px;
+            padding: 18px;
         }
+
         .game-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 22px;
             width: 100%;
             max-width: 500px;
         }
+
         .title {
-            font-size: 3rem;
+            font-size: 2.4rem;
             font-weight: bold;
             color: #fff;
             text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #00d4ff;
             letter-spacing: 8px;
             animation: titleGlow 2s ease-in-out infinite alternate;
+            margin-bottom: 4px;
         }
+
+        .player-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+        }
+
         @keyframes titleGlow {
             from {
                 text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #00d4ff;
@@ -47,101 +60,140 @@
                 text-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff, 0 0 90px #ff00ff;
             }
         }
+
+        .player-name-display {
+            font-size: 1.1rem;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00ff;
+            background: rgba(255, 0, 255, 0.1);
+            padding: 10px 28px;
+            border-radius: 22px;
+            border: 2px solid #ff00ff;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
         .score-display {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             color: #fff;
             text-shadow: 0 0 10px #00ff88;
             background: rgba(0, 255, 136, 0.1);
-            padding: 10px 30px;
-            border-radius: 25px;
+            padding: 10px 28px;
+            border-radius: 22px;
             border: 2px solid #00ff88;
         }
+
         .level-display {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #fff;
             text-shadow: 0 0 10px #ffaa00;
             background: rgba(255, 170, 0, 0.1);
-            padding: 8px 25px;
-            border-radius: 20px;
+            padding: 10px 28px;
+            border-radius: 22px;
             border: 2px solid #ffaa00;
         }
+
         .simon-board {
             position: relative;
-            width: 320px;
-            height: 320px;
+            width: 310px;
+            height: 310px;
             border-radius: 50%;
             background: radial-gradient(circle, #2a2a4a 0%, #1a1a2e 100%);
             box-shadow: 
                 0 0 30px rgba(0, 212, 255, 0.5),
                 0 0 60px rgba(0, 212, 255, 0.3),
                 inset 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 6px;
+            margin: 6px 0;
         }
+
         .color-btn {
             position: absolute;
-            width: 160px;
-            height: 160px;
+            width: 148px;
+            height: 148px;
             border: none;
             cursor: pointer;
             transition: all 0.15s ease;
             opacity: 0.6;
         }
+
         .color-btn:hover {
             opacity: 0.8;
         }
+
         .color-btn.active {
             opacity: 1;
         }
+
         .color-btn:disabled {
             cursor: not-allowed;
             opacity: 0.4;
         }
+
         .green {
             background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-            top: 0;
-            left: 0;
-            border-radius: 50% 0 0 0;
+            top: 6px;
+            left: 6px;
+            border-radius: 100% 6px 6px 6px;
             box-shadow: 0 0 20px #00ff88, inset 0 0 15px rgba(255,255,255,0.3);
         }
+
         .green.active {
             box-shadow: 0 0 50px #00ff88, 0 0 80px #00ff88, inset 0 0 25px rgba(255,255,255,0.5);
         }
+
         .yellow {
             background: linear-gradient(135deg, #ffdd00 0%, #ccaa00 100%);
-            top: 0;
-            right: 0;
-            border-radius: 0 50% 0 0;
+            top: 6px;
+            right: 6px;
+            border-radius: 6px 100% 6px 6px;
             box-shadow: 0 0 20px #ffdd00, inset 0 0 15px rgba(255,255,255,0.3);
         }
+
         .yellow.active {
             box-shadow: 0 0 50px #ffdd00, 0 0 80px #ffdd00, inset 0 0 25px rgba(255,255,255,0.5);
         }
+
         .red {
             background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
-            bottom: 0;
-            left: 0;
-            border-radius: 0 0 0 50%;
+            bottom: 6px;
+            left: 6px;
+            border-radius: 6px 6px 6px 100%;
             box-shadow: 0 0 20px #ff4444, inset 0 0 15px rgba(255,255,255,0.3);
         }
+
         .red.active {
             box-shadow: 0 0 50px #ff4444, 0 0 80px #ff4444, inset 0 0 25px rgba(255,255,255,0.5);
         }
+
         .blue {
             background: linear-gradient(135deg, #4488ff 0%, #0044cc 100%);
-            bottom: 0;
-            right: 0;
-            border-radius: 0 0 50% 0;
+            bottom: 6px;
+            right: 6px;
+            border-radius: 6px 6px 100% 6px;
             box-shadow: 0 0 20px #4488ff, inset 0 0 15px rgba(255,255,255,0.3);
         }
+
         .blue.active {
             box-shadow: 0 0 50px #4488ff, 0 0 80px #4488ff, inset 0 0 25px rgba(255,255,255,0.5);
         }
+
         .center-circle {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
+            width: 95px;
+            height: 95px;
             background: radial-gradient(circle, #3a3a5a 0%, #1a1a2e 100%);
             border-radius: 50%;
             box-shadow: 
@@ -152,36 +204,63 @@
             align-items: center;
             z-index: 10;
         }
+
         .center-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #888;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
+            padding: 0 5px;
         }
-        .start-btn {
-            padding: 15px 50px;
-            font-size: 1.3rem;
+
+        .button-row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .glow-btn {
+            padding: 14px 32px;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
             border: none;
             border-radius: 30px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            box-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, inset 0 0 10px rgba(255,255,255,0.3);
+            letter-spacing: 2px;
             transition: all 0.3s ease;
         }
-        .start-btn:hover {
+
+        .start-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+            box-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, inset 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .start-btn:hover:not(:disabled) {
             transform: scale(1.05);
             box-shadow: 0 0 30px #00d4ff, 0 0 60px #00d4ff, inset 0 0 15px rgba(255,255,255,0.3);
         }
+
         .start-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
+
+        .leaderboard-btn {
+            background: linear-gradient(135deg, #ffaa00 0%, #ff6600 100%);
+            box-shadow: 0 0 15px #ffaa00, 0 0 30px rgba(255,170,0,0.5), inset 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .leaderboard-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ffaa00, 0 0 50px #ffaa00, inset 0 0 15px rgba(255,255,255,0.3);
+        }
+
         /* Modal Styles */
         .modal-overlay {
             position: fixed;
@@ -195,123 +274,377 @@
             align-items: center;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            padding: 15px;
+            overflow-y: auto;
         }
+
+        .modal-overlay.flex-show {
+            display: flex;
+        }
+
         .modal {
             background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
-            padding: 40px 60px;
-            border-radius: 30px;
+            padding: 38px 40px;
+            border-radius: 25px;
             text-align: center;
             border: 3px solid #ff4444;
             box-shadow: 
                 0 0 50px rgba(255, 68, 68, 0.5),
                 0 0 100px rgba(255, 68, 68, 0.3);
             animation: modalPop 0.5s ease;
-            max-width: 90%;
+            max-width: 95%;
+            width: 420px;
+            max-height: 95vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
+
+        .modal.modal-name {
+            border-color: #00d4ff;
+            box-shadow: 
+                0 0 50px rgba(0, 212, 255, 0.5),
+                0 0 100px rgba(0, 212, 255, 0.3);
+        }
+
+        .modal.modal-leaderboard {
+            border-color: #ffaa00;
+            box-shadow: 
+                0 0 50px rgba(255, 170, 0, 0.5),
+                0 0 100px rgba(255, 170, 0, 0.3);
+        }
+
         @keyframes modalPop {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
+
         .modal h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #ff4444;
-            margin-bottom: 20px;
+            margin: 0;
             text-shadow: 0 0 20px #ff4444, 0 0 40px #ff4444;
         }
+
+        .modal.modal-name h2 {
+            color: #00d4ff;
+            text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff;
+        }
+
+        .modal.modal-leaderboard h2 {
+            color: #ffaa00;
+            text-shadow: 0 0 20px #ffaa00, 0 0 40px #ffaa00;
+        }
+
         .modal-score {
-            font-size: 4rem;
+            font-size: 3.2rem;
             color: #fff;
-            margin: 20px 0;
+            margin: 0;
             text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
         }
+
         .modal-text {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #aaa;
-            margin-bottom: 30px;
+            margin: 0;
         }
-        .restart-btn {
-            padding: 15px 50px;
-            font-size: 1.3rem;
+
+        .name-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1.1rem;
+            color: #fff;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            outline: none;
+            text-align: center;
+            margin: 0;
+            box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .name-input:focus {
+            box-shadow: 0 0 15px #00d4ff, inset 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .name-input::placeholder {
+            color: #666;
+        }
+
+        .modal-btn-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .modal-btn {
+            padding: 14px 26px;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88, inset 0 0 10px rgba(255,255,255,0.3);
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            box-shadow: 0 0 15px #00ff88, inset 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .continue-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #00ff88, 0 0 50px #00ff88;
+        }
+
+        .new-player-btn {
+            background: linear-gradient(135deg, #ff00ff 0%, #aa00aa 100%);
+            box-shadow: 0 0 15px #ff00ff, inset 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .new-player-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff00ff, 0 0 50px #ff00ff;
+        }
+
+        .submit-name-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+            box-shadow: 0 0 15px #00d4ff, inset 0 0 10px rgba(255,255,255,0.3);
+            width: 100%;
+        }
+
+        .submit-name-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px #00d4ff, 0 0 50px #00d4ff;
+        }
+
+        .close-btn {
+            background: linear-gradient(135deg, #555 0%, #333 100%);
+            box-shadow: 0 0 10px rgba(255,255,255,0.2), inset 0 0 10px rgba(255,255,255,0.1);
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* Leaderboard */
+        .leaderboard-list {
+            list-style: none;
+            margin: 15px 0;
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .leaderboard-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .leaderboard-list::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+        }
+
+        .leaderboard-list::-webkit-scrollbar-thumb {
+            background: #ffaa00;
+            border-radius: 3px;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
-        .restart-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px #00ff88, 0 0 60px #00ff88, inset 0 0 15px rgba(255,255,255,0.3);
+
+        .leaderboard-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(3px);
         }
+
+        .leaderboard-rank {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+
+        .rank-1 {
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        .rank-2 {
+            background: linear-gradient(135deg, #c0c0c0 0%, #888 100%);
+            box-shadow: 0 0 15px #c0c0c0;
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+            box-shadow: 0 0 15px #cd7f32;
+            color: #fff;
+        }
+
+        .rank-other {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        .leaderboard-item.top-1 {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .leaderboard-item.top-2 {
+            border-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.1);
+        }
+
+        .leaderboard-item.top-3 {
+            border-color: #cd7f32;
+            background: rgba(205, 127, 50, 0.1);
+        }
+
+        .leaderboard-name {
+            flex: 1;
+            text-align: left;
+            margin-left: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .leaderboard-score {
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 8px #00ff88;
+        }
+
+        .empty-leaderboard {
+            color: #888;
+            padding: 30px 10px;
+            font-style: italic;
+        }
+
         /* Responsive Design */
         @media (max-width: 500px) {
             .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                letter-spacing: 5px;
             }
+
             .simon-board {
-                width: 280px;
-                height: 280px;
+                width: 270px;
+                height: 270px;
             }
+
             .color-btn {
-                width: 140px;
-                height: 140px;
+                width: 135px;
+                height: 135px;
             }
+
             .center-circle {
                 width: 80px;
                 height: 80px;
             }
+
             .center-text {
                 font-size: 0.7rem;
             }
-            .score-display {
-                font-size: 1.2rem;
-            }
+
             .modal h2 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
+
             .modal-score {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            .modal {
+                padding: 25px 20px;
             }
         }
+
+        @media (max-height: 700px) {
+            .title { font-size: 1.6rem; }
+            .simon-board { width: 240px; height: 240px; }
+            .color-btn { width: 120px; height: 120px; }
+            .center-circle { width: 70px; height: 70px; }
+            .game-container { gap: 8px; }
+        }
+
         @media (max-width: 350px) {
             .simon-board {
-                width: 250px;
-                height: 250px;
+                width: 230px;
+                height: 230px;
             }
+
             .color-btn {
-                width: 125px;
-                height: 125px;
+                width: 115px;
+                height: 115px;
             }
+
             .center-circle {
-                width: 70px;
-                height: 70px;
+                width: 65px;
+                height: 65px;
             }
+
             .title {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+                letter-spacing: 3px;
             }
+
+            .glow-btn { padding: 10px 20px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
     <div class="game-container">
         <h1 class="title">SIMON</h1>
-        
-        <div class="score-display">
-            Score: <span id="score">0</span>
+
+        <div class="player-name-display">
+            👤 <span id="player-name">Player</span>
         </div>
-        <div class="level-display">
-            Level: <span id="level">0</span>
+
+        <div class="stats-row">
+            <div class="score-display">
+                Score: <span id="score">0</span>
+            </div>
+            <div class="level-display">
+                Level: <span id="level">0</span>
+            </div>
         </div>
+
         <div class="simon-board">
             <button class="color-btn green" data-color="green" aria-label="Green button"></button>
             <button class="color-btn yellow" data-color="yellow" aria-label="Yellow button"></button>
@@ -322,18 +655,46 @@
                 <span class="center-text" id="center-text">Ready?</span>
             </div>
         </div>
-        <button class="start-btn" id="start-btn">Start Game</button>
+
+        <div class="button-row">
+            <button class="glow-btn start-btn" id="start-btn">Start Game</button>
+            <button class="glow-btn leaderboard-btn" id="toggle-leaderboard-btn">🏆 Leaderboard</button>
+        </div>
     </div>
+
+    <!-- Username Modal -->
+    <div class="modal-overlay" id="name-modal-overlay">
+        <div class="modal modal-name">
+            <h2>WELCOME!</h2>
+            <div class="modal-text">Enter your name to begin</div>
+            <input type="text" class="name-input" id="name-input" placeholder="Your name..." maxlength="15" />
+            <button class="modal-btn submit-name-btn" id="submit-name-btn">Let's Play!</button>
+        </div>
+    </div>
+
     <!-- Game Over Modal -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
             <h2>GAME OVER!</h2>
-            <div class="modal-text">Your Final Score</div>
+            <div class="modal-text"><span id="game-over-name">Player</span>'s Final Score</div>
             <div class="modal-score" id="final-score">0</div>
             <div class="modal-text" id="level-reached">You reached Level 0</div>
-            <button class="restart-btn" id="restart-btn">Play Again</button>
+            <div class="modal-btn-row">
+                <button class="modal-btn continue-btn" id="continue-btn">Continue</button>
+                <button class="modal-btn new-player-btn" id="new-player-btn">New Player</button>
+            </div>
         </div>
     </div>
+
+    <!-- Leaderboard Modal -->
+    <div class="modal-overlay" id="leaderboard-modal-overlay">
+        <div class="modal modal-leaderboard">
+            <h2>🏆 LEADERBOARD</h2>
+            <ul class="leaderboard-list" id="leaderboard-list"></ul>
+            <button class="modal-btn close-btn" id="close-leaderboard-btn">Close</button>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             // Game variables
@@ -343,14 +704,10 @@
             let score = 0;
             let isGameActive = false;
             let isComputerTurn = false;
+            let currentPlayer = '';
             
             const colors = ['green', 'yellow', 'red', 'blue'];
-            const colorMap = {
-                'green': 140,
-                'yellow': 160,
-                'red': 180,
-                'blue': 200
-            };
+
             // Sound frequencies for each color
             const soundFrequencies = {
                 'green': 329.63,
@@ -358,40 +715,41 @@
                 'red': 261.63,
                 'blue': 349.23
             };
+
             // Audio context for sounds
             let audioContext = null;
+
             function initAudio() {
                 if (!audioContext) {
-                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    try {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    } catch (e) {}
                 }
             }
+
             function playSound(color) {
                 if (!audioContext) return;
-                
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
-                
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
-                
                 oscillator.frequency.value = soundFrequencies[color];
                 oscillator.type = 'sine';
-                
                 gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-                
                 oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + 0.5);
             }
+
             function flashButton(color) {
                 const $button = $(`.color-btn.${color}`);
                 $button.addClass('active');
                 playSound(color);
-                
                 setTimeout(function() {
                     $button.removeClass('active');
                 }, 350);
             }
+
             function nextSequence() {
                 level++;
                 score = level - 1;
@@ -399,11 +757,9 @@
                 $('#score').text(score);
                 $('#center-text').text('Watch!');
                 
-                // Add new random color to sequence
                 const randomColor = colors[Math.floor(Math.random() * 4)];
                 gameSequence.push(randomColor);
                 
-                // Play the sequence
                 isComputerTurn = true;
                 playerSequence = [];
                 
@@ -419,13 +775,13 @@
                     }
                 }, 600);
             }
+
             function handleColorClick(color) {
                 if (!isGameActive || isComputerTurn) return;
                 
                 flashButton(color);
                 playerSequence.push(color);
                 
-                // Check if the clicked color matches the current position in sequence
                 const currentIndex = playerSequence.length - 1;
                 
                 if (playerSequence[currentIndex] !== gameSequence[currentIndex]) {
@@ -433,7 +789,6 @@
                     return;
                 }
                 
-                // Check if player completed the entire sequence
                 if (playerSequence.length === gameSequence.length) {
                     score = level;
                     $('#score').text(score);
@@ -445,14 +800,19 @@
                     }, 1000);
                 }
             }
+
             function gameOver() {
                 isGameActive = false;
                 $('#center-text').text('Game Over!');
                 
+                // Save score to leaderboard
+                saveScore(currentPlayer, score);
+                
                 // Show modal
+                $('#game-over-name').text(currentPlayer);
                 $('#final-score').text(score);
                 $('#level-reached').text('You reached Level ' + level);
-                $('#modal-overlay').fadeIn(300);
+                $('#modal-overlay').addClass('flex-show').hide().fadeIn(300);
                 
                 // Play error sound
                 if (audioContext) {
@@ -468,10 +828,10 @@
                     oscillator.stop(audioContext.currentTime + 0.6);
                 }
             }
+
             function startGame() {
                 initAudio();
                 
-                // Reset game state
                 gameSequence = [];
                 playerSequence = [];
                 level = 0;
@@ -483,32 +843,219 @@
                 $('#score').text('0');
                 $('#start-btn').prop('disabled', true);
                 
-                // Start first sequence
                 setTimeout(function() {
                     nextSequence();
                 }, 500);
             }
-            function restartGame() {
-                $('#modal-overlay').fadeOut(300);
+
+            // ===== LocalStorage Functions =====
+            function getLeaderboard() {
+                try {
+                    const data = localStorage.getItem('simonLeaderboard');
+                    return data ? JSON.parse(data) : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function saveScore(name, scoreValue) {
+                if (!name) return;
+                let board = getLeaderboard();
+                board.push({
+                    name: name,
+                    score: scoreValue,
+                    date: Date.now()
+                });
+                
+                // Sort by score (highest first)
+                board.sort((a, b) => b.score - a.score);
+                
+                // If more than 20 entries, remove the last 5
+                if (board.length > 20) {
+                    board = board.slice(0, board.length - 5);
+                }
+                
+                try {
+                    localStorage.setItem('simonLeaderboard', JSON.stringify(board));
+                } catch (e) {}
+            }
+
+            function savePlayerName(name) {
+                try {
+                    localStorage.setItem('simonCurrentPlayer', name);
+                } catch (e) {}
+            }
+
+            function getPlayerName() {
+                try {
+                    return localStorage.getItem('simonCurrentPlayer') || '';
+                } catch (e) {
+                    return '';
+                }
+            }
+
+            function setCurrentPlayer(name) {
+                currentPlayer = name;
+                $('#player-name').text(name);
+                savePlayerName(name);
+            }
+
+            function renderLeaderboard() {
+                const board = getLeaderboard();
+                const $list = $('#leaderboard-list');
+                $list.empty();
+                
+                if (board.length === 0) {
+                    $list.append('<li class="empty-leaderboard">No scores yet. Be the first!</li>');
+                    return;
+                }
+                
+                board.forEach((entry, idx) => {
+                    const rank = idx + 1;
+                    let rankLabel = rank + 'th';
+                    let rankBadgeClass = 'rank-other';
+                    let itemTopClass = '';
+                    
+                    if (rank === 1) {
+                        rankLabel = '1st';
+                        rankBadgeClass = 'rank-1';
+                        itemTopClass = 'top-1';
+                    } else if (rank === 2) {
+                        rankLabel = '2nd';
+                        rankBadgeClass = 'rank-2';
+                        itemTopClass = 'top-2';
+                    } else if (rank === 3) {
+                        rankLabel = '3rd';
+                        rankBadgeClass = 'rank-3';
+                        itemTopClass = 'top-3';
+                    }
+                    
+                    const safeName = $('<div>').text(entry.name).html();
+                    
+                    $list.append(`
+                        <li class="leaderboard-item ${itemTopClass}">
+                            <div class="leaderboard-rank">
+                                <span class="rank-badge ${rankBadgeClass}">${rank}</span>
+                                <span>${rankLabel}</span>
+                            </div>
+                            <span class="leaderboard-name">${safeName}</span>
+                            <span class="leaderboard-score">${entry.score}</span>
+                        </li>
+                    `);
+                });
+            }
+
+            // ===== Modal Functions =====
+            function showNameModal() {
+                $('#name-input').val('');
+                $('#name-modal-overlay').addClass('flex-show').hide().fadeIn(300);
+                setTimeout(() => $('#name-input').focus(), 350);
+            }
+
+            function hideNameModal() {
+                $('#name-modal-overlay').fadeOut(300, function() {
+                    $(this).removeClass('flex-show');
+                });
+            }
+
+            function hideGameOverModal() {
+                $('#modal-overlay').fadeOut(300, function() {
+                    $(this).removeClass('flex-show');
+                });
+            }
+
+            function showLeaderboard() {
+                renderLeaderboard();
+                $('#leaderboard-modal-overlay').addClass('flex-show').hide().fadeIn(300);
+            }
+
+            function hideLeaderboard() {
+                $('#leaderboard-modal-overlay').fadeOut(300, function() {
+                    $(this).removeClass('flex-show');
+                });
+            }
+
+            function resetGameUI() {
                 $('#start-btn').prop('disabled', false);
                 $('#center-text').text('Ready?');
+                $('#level').text('0');
+                $('#score').text('0');
+                level = 0;
+                score = 0;
+                gameSequence = [];
+                playerSequence = [];
+                isGameActive = false;
             }
-            // Event listeners
+
+            function handleSubmitName() {
+                const name = $('#name-input').val().trim();
+                if (!name) {
+                    $('#name-input').css('border-color', '#ff4444').focus();
+                    setTimeout(() => $('#name-input').css('border-color', ''), 1500);
+                    return;
+                }
+                setCurrentPlayer(name);
+                hideNameModal();
+                resetGameUI();
+            }
+
+            // ===== Event Listeners =====
             $('#start-btn').on('click', function() {
+                if (!currentPlayer) {
+                    showNameModal();
+                    return;
+                }
                 startGame();
             });
-            $('#restart-btn').on('click', function() {
-                restartGame();
+
+            $('#submit-name-btn').on('click', handleSubmitName);
+
+            $('#name-input').on('keypress', function(e) {
+                if (e.which === 13) handleSubmitName();
             });
+
+            $('#continue-btn').on('click', function() {
+                hideGameOverModal();
+                resetGameUI();
+            });
+
+            $('#new-player-btn').on('click', function() {
+                hideGameOverModal();
+                resetGameUI();
+                showNameModal();
+            });
+
+            $('#toggle-leaderboard-btn').on('click', function() {
+                if ($('#leaderboard-modal-overlay').hasClass('flex-show')) {
+                    hideLeaderboard();
+                } else {
+                    showLeaderboard();
+                }
+            });
+
+            $('#close-leaderboard-btn').on('click', hideLeaderboard);
+
+            $('#leaderboard-modal-overlay').on('click', function(e) {
+                if (e.target === this) hideLeaderboard();
+            });
+
             $('.color-btn').on('click', function() {
                 const color = $(this).data('color');
                 handleColorClick(color);
             });
-            // Prevent double-tap zoom on mobile
+
             $('.color-btn').on('touchstart', function(e) {
                 e.preventDefault();
                 $(this).trigger('click');
             });
+
+            // ===== Initialize =====
+            const savedName = getPlayerName();
+            if (savedName) {
+                setCurrentPlayer(savedName);
+            } else {
+                showNameModal();
+            }
         });
     </script>
 </body>
